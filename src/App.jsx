@@ -10,7 +10,6 @@ function App() {
     const [text, setText] = useState('');
     const dispatch = useDispatch();
   
- 
   return (
     <>
      <div className='container m-5'>

@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-
 const todoSlice = createSlice({
   name: 'todos',
   initialState: { 
@@ -8,23 +7,21 @@ const todoSlice = createSlice({
    },
   reducers: {
     addTodo: (state, action) => {
-      state.todos.push({ id: Date.now(), text: action.payload, completed: false });
+      state.todos.push({ id: state.todos.length, text: action.payload, completed: false });
       localStorage.setItem('todos', JSON.stringify(state.todos));
     },
     toggleTodo: (state, action) => {
-      const todo = state.todos.find(todo => todo.id === action.payload);
+      const todo = state.todos[action.payload];
       if (todo) {
         todo.completed = !todo.completed;
       }
       localStorage.setItem('todos', JSON.stringify(state.todos));
     },
     deleteTodo: (state, action) => {
-      state.todos = state.todos.filter(todo => todo.id !== action.payload);
+      state.todos = state.todos.filter((todo, index) => index !== action.payload);
       localStorage.setItem('todos', JSON.stringify(state.todos));
     },
   },
 });
 
-
-
- export const { actions, reducer } = todoSlice;
+export const { actions, reducer } = todoSlice;
