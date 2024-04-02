@@ -23,7 +23,7 @@ function App() {
       >
        <div className='d-flex justify-content-center align-items-center mt-5'>
           <input className='p-1 me-2' value={text} onChange={e => setText(e.target.value)} placeholder='Add Todo....'/>
-          <button className='btn btn-info' type="submit">Submit</button>
+          <button className='btn btn-success' type="submit">Submit</button>
        </div>
       </form>
 
